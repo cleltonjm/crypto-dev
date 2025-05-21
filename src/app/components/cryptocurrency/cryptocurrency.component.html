@@ -1,0 +1,32 @@
+<section>
+    <div class="container">
+        <h1>Lista das Criptomoedas por Capitalização de mercado:</h1>
+    </div>
+    
+    <div *ngIf="isLoading">Loading...</div>
+
+    <table *ngIf="!isLoading" class="table-auto w-full">
+    <thead>
+        <tr>
+        <th>Moeda</th>
+        <th>Preço</th>
+        <th>Variação (24h)</th>
+        <th>Volume</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let crypto of cryptos">
+        <td>
+            <img [src]="crypto.image" alt="{{crypto.name}}" width="20" class="inline">
+            {{ crypto.name }} ({{ crypto.symbol.toUpperCase() }})
+        </td>
+        <td>\${{ crypto.current_price | number:'1.2-2' }}</td>
+        <td [ngClass]="{'text-green-500': crypto.price_change_percentage_24h > 0, 'text-red-500': crypto.price_change_percentage_24h < 0}">
+            {{ crypto.price_change_percentage_24h | number:'1.2-2' }}%
+        </td>
+        <td>\${{ crypto.total_volume | number:'1.0-0' }}</td>
+        </tr>
+    </tbody>
+    </table>
+
+</section>

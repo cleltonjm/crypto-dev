@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CryptocurrencyComponent } from "./components/cryptocurrency/cryptocurrency.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CryptocurrencyComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
